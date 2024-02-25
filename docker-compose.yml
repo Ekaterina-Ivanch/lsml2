@@ -1,0 +1,16 @@
+services:
+  be_app:
+    container_name: be_app
+    build:
+      context: ./be_flask
+    ports:
+      - "5000:5000"
+
+  fe_app:
+    container_name: fe_app
+    build:
+      context: ./fe_stream
+    depends_on:
+      - be_app
+    ports:
+      - "8501:8501"
